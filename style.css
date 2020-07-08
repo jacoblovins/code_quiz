@@ -33,9 +33,14 @@ button {
 }
 
 #highScores {
-    background-color: rgba(133, 2, 133, 0.2);
     max-width: 60%;
     margin: auto;
+}
+
+li {
+    padding: 5px;
+    margin-top: 10px;
+    background-color: rgba(133, 2, 133, 0.2);
 }
 
 .hScore {

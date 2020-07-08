@@ -1,7 +1,7 @@
 var container = document.querySelector(".container");
 var timer = document.querySelector("#timer");
-var highScores = document.getElementById("highScores");
-var ifCorrect = document.getElementById("ifCorrect");
+var highScores = document.querySelector("#highScores");
+var ifCorrect = document.querySelector("#ifCorrect");
 var q = 0;
 var count = 60;
 
@@ -68,7 +68,7 @@ var questionArr = [
 // Start screen function
 (function startScreen() {
 
-    startBtn.addEventListener("click", function(){
+    startBtn.addEventListener("click", function () {
         startTimer();
         quizQuestions();
 
@@ -76,17 +76,17 @@ var questionArr = [
 })();
 
 // start the countdown
-function startTimer(){
-    var interval = setInterval(function(){
+function startTimer() {
+    var interval = setInterval(function () {
         count--;
         // check if time runs out
-        if (count <= 0){
+        if (count <= 0) {
             clearInterval(interval);
             count = 0;
             allDone();
         }
         // check if all questions answered
-        if (q >= questionArr.length){
+        if (q >= questionArr.length) {
             clearInterval(interval);
             allDone();
         }
@@ -106,23 +106,22 @@ function quizQuestions() {
     container.appendChild(askQuestion);
 
     // provide choice buttons
-    for(var a = 0; a < questionArr[q].answers.length; a++){
-            var choices = document.createElement("button");
-            choices.textContent = questionArr[q].answers[a];
-            container.appendChild(choices);
-            choices.addEventListener("click", checkAnswer);
+    for (var a = 0; a < questionArr[q].answers.length; a++) {
+        var choices = document.createElement("button");
+        choices.textContent = questionArr[q].answers[a];
+        container.appendChild(choices);
+        choices.addEventListener("click", checkAnswer);
     };
-    
+
     // check if users choice is correct
-    function checkAnswer(e){
-        if (e.target.textContent === questionArr[q].correctAnswer){
+    function checkAnswer(e) {
+        if (e.target.textContent === questionArr[q].correctAnswer) {
             console.log("correct");
             q++;
             popUp("Correct!");
             quizQuestions();
-
         } else {
-            count= count - 15;
+            count = count - 15;
             console.log("wrong");
             q++;
             popUp("Wrong!");
@@ -131,16 +130,18 @@ function quizQuestions() {
     }
 }
 
-function popUp(label){
+// Correct or Wrong popup at the bottom after selection is made
+function popUp(label) {
     ifCorrect.innerHTML = label;
     ifCorrect.style.borderTop = "1px solid #ccc";
-    setTimeout(function(){
-         ifCorrect.innerHTML = ""; 
-         ifCorrect.style.borderTop = "none";
-        }, 1000);
+    setTimeout(function () {
+        ifCorrect.innerHTML = "";
+        ifCorrect.style.borderTop = "none";
+    }, 1000);
 }
 
-function allDone(){
+// display score and enter initials function 
+function allDone() {
     // clear the container for new content
     container.innerHTML = "";
 
@@ -154,32 +155,29 @@ function allDone(){
     container.appendChild(finalScore);
 
     var form = document.createElement("form");
-    var input = document.createElement("input"); 
-    var submit = document.createElement("button"); 
+    var input = document.createElement("input");
+    var submit = document.createElement("button");
     submit.textContent = "submit";
-    
 
     form.appendChild(input);
     form.appendChild(submit);
     container.appendChild(form);
-   
-    form.addEventListener("submit", function(event){
+
+    // Store user and score in local storage when submitted
+    form.addEventListener("submit", function (event) {
         event.preventDefault();
-        var username = input.value;
-        localStorage.setItem("username", username);
-        localStorage.setItem("score", count);
-        
-        (function goToScores(){
+        var user = input.value.toUpperCase();
+        const result = { userName: user, score: count };
+        const savedScores = localStorage.getItem('highscore') || '[]';
+        const highscores = [...JSON.parse(savedScores), result]
+            .sort((a, b) => b.score - a.score)
+            .slice(0, 3);
+        localStorage.setItem('highscore', JSON.stringify(highscores));
+
+        // Go to High Scores page
+        (function goToScores() {
             location.replace("highScores.html");
         })();
     });
 }
-// (function storeScore(){
-//     var username = localStorage.getItem("username");
-//     var score = localStorage.getItem("score");
-//     var scoreList = document.createElement("li");
-//     scoreList.textContent = username + score;
-//     highScores.appendChild(scoreList);
-//     console.log(username);
-//     console.log(score);
-// })();
+
