@@ -1,0 +1,43 @@
+.container {
+    max-width: 60%;
+    margin-top: 50px;
+}
+
+.startScreen {
+    text-align: center;
+}
+
+#startBtn {
+    margin: auto;
+}
+
+#score {
+    float: right;
+    margin-right: 7%;
+    font-weight: bold;
+}
+
+button {
+    background-color: purple;
+    color: white;
+    border-radius: 10px;
+    display: flex;
+    margin-top: 5px;
+
+}
+
+#ifCorrect {
+    margin-left: 21%;
+    margin-right: 33%;
+    margin-top: 1.5%;
+}
+
+#highScores {
+    background-color: rgba(133, 2, 133, 0.2);
+    max-width: 60%;
+    margin: auto;
+}
+
+.hScore {
+    margin: auto;
+}

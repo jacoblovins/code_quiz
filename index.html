@@ -7,15 +7,20 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="style.css">
     <title>Hello, world!</title>
   </head>
   <body>
     
     <a href="highScores.html">High Scores</a>
-    <p>Time: <span id="timer"></span></p>
+    <p id="score">Time: <span id="timer"></span></p>
 
-    <div class="container"></div>
+    <div class="container">
+      <h1 class="startScreen">Coding Quiz Challenge</h1>
+      <p class="startScreen">Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
+      <button id="startBtn">Start Quiz</button>
+    </div>
+    <div id="ifCorrect"></div>
     <script src="app.js"></script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
