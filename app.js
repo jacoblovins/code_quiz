@@ -111,7 +111,7 @@ function quizQuestions() {
         choices.textContent = questionArr[q].answers[a];
         container.appendChild(choices);
         choices.addEventListener("click", checkAnswer);
-    };
+    }
 
     // check if users choice is correct
     function checkAnswer(e) {
@@ -157,27 +157,26 @@ function allDone() {
     var form = document.createElement("form");
     var input = document.createElement("input");
     var submit = document.createElement("button");
+    submit.setAttribute("id", "submitBtn");
     submit.textContent = "submit";
 
+    container.appendChild(form);
     form.appendChild(input);
     form.appendChild(submit);
-    container.appendChild(form);
 
     // Store user and score in local storage when submitted
     form.addEventListener("submit", function (event) {
         event.preventDefault();
         var user = input.value.toUpperCase();
-        const result = { userName: user, score: count };
-        const savedScores = localStorage.getItem('highscore') || '[]';
-        const highscores = [...JSON.parse(savedScores), result]
+        var result = { userName: user, score: count };
+        var savedScores = localStorage.getItem('highscore') || '[]';
+        var highscores = [...JSON.parse(savedScores), result]
             .sort((a, b) => b.score - a.score)
             .slice(0, 3);
         localStorage.setItem('highscore', JSON.stringify(highscores));
 
         // Go to High Scores page
-        (function goToScores() {
-            location.replace("highScores.html");
-        })();
+        location.replace("highScores.html");
     });
 }
 

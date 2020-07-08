@@ -1,48 +1,58 @@
-.container {
-    max-width: 60%;
-    margin-top: 50px;
-}
-
-.startScreen {
-    text-align: center;
-}
-
-#startBtn {
-    margin: auto;
-}
-
 #score {
     float: right;
     margin-right: 7%;
     font-weight: bold;
 }
-
+.container {
+    max-width: 60%;
+    margin: auto;
+    margin-top: 50px;
+}
 button {
     background-color: purple;
     color: white;
     border-radius: 10px;
     display: flex;
     margin-top: 5px;
-
 }
 
+/* Start Quiz screen with header, info, and start button */
+.startScreen {
+    text-align: center;
+}
+#startBtn {
+    margin: auto;
+}
+
+/* Questions */
 #ifCorrect {
     margin-left: 21%;
     margin-right: 33%;
     margin-top: 1.5%;
 }
 
+#submitBtn {
+    display: inline;
+    margin-left: 5px;
+}
+
+/* High Score page header, list, and buttons */
+#HighScoresLabel {
+    margin-left: 23%;
+}
 #highScores {
     max-width: 60%;
     margin: auto;
 }
-
 li {
     padding: 5px;
     margin-top: 10px;
     background-color: rgba(133, 2, 133, 0.2);
 }
-
+#backAndClear {
+    margin-left: 23%;
+}
 .hScore {
-    margin: auto;
+    display: inline-block;
+    margin-top: 10px;  
 }
