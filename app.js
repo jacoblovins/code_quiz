@@ -7,60 +7,61 @@ var count = 60;
 // questions and answers
 var questionArr = [
     {
+        question: "What is the HTML tag under which one can write the JavaScript code?",
+        answers: [
+            "1. <javascript>",
+            "2. <scripted>",
+            "3. <script>",
+            "4. <js>"
+        ],
+        correctAnswer: "3. <script>"
+    },
+    {
+        question: "Which of the following is the correct syntax to display an alert box using JavaScript?",
+        answers: [
+            "1. alertbox(“someText”)",
+            "2. msg(“someText”)",
+            "3. msgbox(“someText”)",
+            "4. alert(“someText”)"
+        ],
+        correctAnswer: "4. alert(“someText”)"
+    },
+    {
+        question: "The external JavaScript file must contain <script> tag. True or False?",
+        answers: [
+            "1. True",
+            "2. False"
+        ],
+        correctAnswer: "2. False"
+    },
+    {
         question: "Who invented JavaScript?",
         answers: [
-            "1. Douglas Crockford",
-            "2. Sheryl Sandberg",
-            "3. Brendan Eich"
+            "1. Brendan Eich",
+            "2. Douglas Crockford",
+            "3. Sheryl Sandberg"
         ],
-        correctAnswer: "3. Brendan Eich"
+        correctAnswer: "1. Brendan Eich"
     },
     {
-        question: "Which one of these is a JavaScript package manager?",
+        question: "Which of the following is not a reserved word in JavaScript?",
         answers: [
-            "1. Node.js",
-            "2. TypeScript",
-            "3. npm"
+            "1. interface",
+            "2. program",
+            "3. throws",
+            "4. short"
         ],
-        correctAnswer: "3. npm"
+        correctAnswer: "2. program"
     },
     {
-        question: "Which tool can you use to ensure code quality?",
+        question: "What is the JavaScript syntax for printing values in Console?",
         answers: [
-            "1. Angular",
-            "2. jQuery",
-            "3. RequireJS",
-            "4. ESLint"
+            "1. print('')",
+            "2. console.log('')",
+            "3. console.print('')",
+            "4. print.console('')"
         ],
-        correctAnswer: "4. ESLint"
-    },
-    {
-        question: "Who invented JavaScript?",
-        answers: [
-            "1. Douglas Crockford",
-            "2. Sheryl Sandberg",
-            "3. Brendan Eich"
-        ],
-        correctAnswer: "3. Brendan Eich"
-    },
-    {
-        question: "Which one of these is a JavaScript package manager?",
-        answers: [
-            "1. Node.js",
-            "2. TypeScript",
-            "3. npm"
-        ],
-        correctAnswer: "3. npm"
-    },
-    {
-        question: "Which tool can you use to ensure code quality?",
-        answers: [
-            "1. Angular",
-            "2. jQuery",
-            "3. RequireJS",
-            "4. ESLint"
-        ],
-        correctAnswer: "4. ESLint"
+        correctAnswer: "2. console.log('')"
     }
 ];
 
@@ -121,7 +122,7 @@ function quizQuestions() {
         } else {
             count -= 15;
             q++;
-            popUp("Wrong!");
+            popUp("Incorrect!");
             quizQuestions();
         }
     }
@@ -142,7 +143,7 @@ function allDone() {
     // clear the container for new content
     container.innerHTML = "";
 
-    // build the container
+    // build the All Done container
     var header = document.createElement("h1");
     header.textContent = "All Done!";
     container.appendChild(header);
@@ -156,6 +157,7 @@ function allDone() {
     inits.textContent = "Enter Initials:"
     var form = document.createElement("form");
     var input = document.createElement("input");
+    input.required = true;
     var submit = document.createElement("button");
     submit.setAttribute("id", "submitBtn");
     submit.textContent = "Submit";
@@ -172,8 +174,9 @@ function allDone() {
         var result = { userName: user, score: count };
         var savedScores = localStorage.getItem('highscore') || '[]';
         var highscores = [...JSON.parse(savedScores), result]
-            .sort((a, b) => b.score - a.score)
-            .slice(0, 3);
+            .sort(function (a, b) {
+                return b.score - a.score;
+            }).slice(0, 3);
         localStorage.setItem('highscore', JSON.stringify(highscores));
 
         // Go to High Scores page
