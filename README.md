@@ -4,5 +4,9 @@ This is a JavaScript Code Quiz. You have 60 seconds to make it through all of th
 [Click Here to check it out!](https://jacoblovins.github.io/code_quiz/)
 
 ![Alt text](images/start_screen.png "Title")
+
+
 ![Alt text](images/questions.png "Title")
+
+
 ![Alt text](images/highScores.png "Title")
