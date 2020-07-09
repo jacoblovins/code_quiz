@@ -1,6 +1,5 @@
 var container = document.querySelector(".container");
 var timer = document.querySelector("#timer");
-var highScores = document.querySelector("#highScores");
 var ifCorrect = document.querySelector("#ifCorrect");
 var q = 0;
 var count = 60;
@@ -116,13 +115,11 @@ function quizQuestions() {
     // check if users choice is correct
     function checkAnswer(e) {
         if (e.target.textContent === questionArr[q].correctAnswer) {
-            console.log("correct");
             q++;
             popUp("Correct!");
             quizQuestions();
         } else {
-            count = count - 15;
-            console.log("wrong");
+            count -= 15;
             q++;
             popUp("Wrong!");
             quizQuestions();
@@ -151,15 +148,19 @@ function allDone() {
     container.appendChild(header);
 
     var finalScore = document.createElement("p");
-    finalScore.textContent = "Your final score: " + count;
+    finalScore.textContent = "Your final score is: " + count;
     container.appendChild(finalScore);
 
+    var inits = document.createElement("p");
+    inits.setAttribute("id", "inits");
+    inits.textContent = "Enter Initials:"
     var form = document.createElement("form");
     var input = document.createElement("input");
     var submit = document.createElement("button");
     submit.setAttribute("id", "submitBtn");
-    submit.textContent = "submit";
+    submit.textContent = "Submit";
 
+    container.appendChild(inits);
     container.appendChild(form);
     form.appendChild(input);
     form.appendChild(submit);
