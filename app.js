@@ -71,7 +71,6 @@ var questionArr = [
     startBtn.addEventListener("click", function () {
         startTimer();
         quizQuestions();
-
     });
 })();
 
