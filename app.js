@@ -1,11 +1,11 @@
-var container = document.querySelector(".container");
-var timer = document.querySelector("#timer");
-var ifCorrect = document.querySelector("#ifCorrect");
-var q = 0;
-var count = 60;
+const container = document.querySelector(".container");
+const timer = document.querySelector("#timer");
+const ifCorrect = document.querySelector("#ifCorrect");
+let q = 0;
+let count = 60;
 
 // questions and answers
-var questionArr = [
+const questionArr = [
     {
         question: "What is the HTML tag under which one can write the JavaScript code?",
         answers: [
@@ -75,7 +75,7 @@ var questionArr = [
 })();
 
 // start the countdown
-function startTimer() {
+const startTimer = () => {
     var interval = setInterval(function () {
         count--;
         // check if time runs out
@@ -94,19 +94,19 @@ function startTimer() {
 }
 
 // loop through questions
-function quizQuestions() {
+const quizQuestions = () => {
 
     // clear the container for new content
     container.innerHTML = "";
 
     // build question area
-    var askQuestion = document.createElement("h3");
+    const askQuestion = document.createElement("h3");
     askQuestion.textContent = questionArr[q].question;
     container.appendChild(askQuestion);
 
     // provide choice buttons
-    for (var a = 0; a < questionArr[q].answers.length; a++) {
-        var choices = document.createElement("button");
+    for (let a = 0; a < questionArr[q].answers.length; a++) {
+        const choices = document.createElement("button");
         choices.textContent = questionArr[q].answers[a];
         container.appendChild(choices);
         choices.addEventListener("click", checkAnswer);
@@ -128,7 +128,7 @@ function quizQuestions() {
 }
 
 // Correct or Wrong popup at the bottom after selection is made
-function popUp(label) {
+const popUp = label => {
     ifCorrect.innerHTML = label;
     ifCorrect.style.borderTop = "1px solid #ccc";
     setTimeout(function () {
@@ -138,26 +138,26 @@ function popUp(label) {
 }
 
 // display score and enter initials function 
-function allDone() {
+const allDone = () => {
     // clear the container for new content
     container.innerHTML = "";
 
     // build the All Done container
-    var header = document.createElement("h1");
+    const header = document.createElement("h1");
     header.textContent = "All Done!";
     container.appendChild(header);
 
-    var finalScore = document.createElement("p");
+    const finalScore = document.createElement("p");
     finalScore.textContent = "Your final score is: " + count;
     container.appendChild(finalScore);
 
-    var inits = document.createElement("p");
+    const inits = document.createElement("p");
     inits.setAttribute("id", "inits");
     inits.textContent = "Enter Initials:"
-    var form = document.createElement("form");
-    var input = document.createElement("input");
+    const form = document.createElement("form");
+    const input = document.createElement("input");
     input.required = true;
-    var submit = document.createElement("button");
+    const submit = document.createElement("button");
     submit.setAttribute("id", "submitBtn");
     submit.textContent = "Submit";
 
@@ -167,12 +167,12 @@ function allDone() {
     form.appendChild(submit);
 
     // Store user and score in local storage when submitted
-    form.addEventListener("submit", function (event) {
+    form.addEventListener("submit", event => {
         event.preventDefault();
-        var user = input.value.toUpperCase();
-        var result = { userName: user, score: count };
-        var savedScores = localStorage.getItem('highscore') || '[]';
-        var highscores = [...JSON.parse(savedScores), result]
+        const user = input.value.toUpperCase();
+        const result = { userName: user, score: count };
+        const savedScores = localStorage.getItem('highscore') || '[]';
+        const highscores = [...JSON.parse(savedScores), result]
             .sort(function (a, b) {
                 return b.score - a.score;
             }).slice(0, 3);
