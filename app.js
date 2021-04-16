@@ -75,7 +75,7 @@ const quizQuestions = () => {
 const popUp = label => {
     ifCorrect.innerHTML = label;
     ifCorrect.style.borderTop = "1px solid #ccc";
-    setTimeout(function () {
+    setTimeout(function () { 
         ifCorrect.innerHTML = "";
         ifCorrect.style.borderTop = "none";
     }, 1000);
