@@ -84,7 +84,7 @@ const popUp = label => {
 // display score and enter initials function 
 const allDone = () => {
     // clear the container for new content
-    container.innerHTML = "";
+    container.innerHTML = ""; 
 
     // build the All Done container 
     const header = document.createElement("h1");
