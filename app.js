@@ -86,7 +86,7 @@ const allDone = () => {
     // clear the container for new content
     container.innerHTML = "";
 
-    // build the All Done container
+    // build the All Done container 
     const header = document.createElement("h1");
     header.textContent = "All Done!";
     container.appendChild(header);
