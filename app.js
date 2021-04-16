@@ -80,7 +80,7 @@ const popUp = label => {
         ifCorrect.style.borderTop = "none";
     }, 1000);
 }
-
+ 
 // display score and enter initials function 
 const allDone = () => {
     // clear the container for new content
