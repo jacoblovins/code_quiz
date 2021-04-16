@@ -69,7 +69,7 @@ const quizQuestions = () => {
         choices.addEventListener("click", checkAnswer);
     }
 
-} 
+}  
 
 // Correct or Wrong popup at the bottom after selection is made
 const popUp = label => {
