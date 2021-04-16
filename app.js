@@ -14,8 +14,10 @@ let count = 60;
     });
 })();
 
+
 // start the countdown
 const startTimer = () => {
+
     const interval = setInterval(function () {
         count--;
         // check if time runs out
@@ -33,6 +35,7 @@ const startTimer = () => {
     }, 1000);
 }
 
+
 // loop through questions
 const quizQuestions = () => {
 
@@ -44,16 +47,8 @@ const quizQuestions = () => {
     askQuestion.textContent = questionArr[q].question;
     container.appendChild(askQuestion);
 
-    // provide choice buttons
-    for (let a = 0; a < questionArr[q].answers.length; a++) {
-        const choices = document.createElement("button");
-        choices.textContent = questionArr[q].answers[a];
-        container.appendChild(choices);
-        choices.addEventListener("click", checkAnswer);
-    }
-
     // check if users choice is correct
-    function checkAnswer(e) {
+    const checkAnswer = e => {
         if (e.target.textContent === questionArr[q].correctAnswer) {
             q++;
             popUp("Correct!");
@@ -65,6 +60,15 @@ const quizQuestions = () => {
             quizQuestions();
         }
     }
+ 
+    // provide choice buttons
+    for (let a = 0; a < questionArr[q].answers.length; a++) {
+        const choices = document.createElement("button");
+        choices.textContent = questionArr[q].answers[a];
+        container.appendChild(choices);
+        choices.addEventListener("click", checkAnswer);
+    }
+
 }
 
 // Correct or Wrong popup at the bottom after selection is made
