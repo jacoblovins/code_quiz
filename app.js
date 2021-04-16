@@ -79,7 +79,7 @@ const popUp = label => {
         ifCorrect.innerHTML = "";
         ifCorrect.style.borderTop = "none";
     }, 1000);
-}
+} 
  
 // display score and enter initials function 
 const allDone = () => {
